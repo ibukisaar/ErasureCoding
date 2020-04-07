@@ -24,6 +24,7 @@ public static class ErasureCoding {
 ```
 
 假设我们有42字节的数据，每6个字节想使用4个纠错码，共需要28字节的纠错码。
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/1_1.png)
 
 调用ErasureCoding.Encode方法来填充纠错码，然后将数据如图所示拆成10份存储或传输。
@@ -36,7 +37,9 @@ ErasureCoding.Encode(data, ec, 6, 4);
 ```
 
 假设第2、4、8份数据丢失，随意取2份纠错码填充到原始数据中（下例取第1、3份纠错码到第2、4份数据中），然后调用ErasureCoding.Decode方法来恢复数据。
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/1_2.png)
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/1_3.png)
 
 ```csharp
@@ -51,9 +54,13 @@ ErasureCoding.Decode(data, 6, indexes); // 恢复数据
 ```
 
 ## 原理
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/2_1.png)
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/2_2.png)
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/2_3.png)
+
 ![image](https://github.com/ibukisaar/ErasureCoding/raw/master/imgs/2_4.png)
 
 上述矩阵中的元素都是GF(2^8)中的元素，其中a^i是GF(2^8)具体的元素。
